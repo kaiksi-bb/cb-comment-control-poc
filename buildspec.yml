@@ -1,0 +1,18 @@
+version: 0.2
+env:
+  variables:
+    POC_LABEL: "cb-comment-control-poc"
+phases:
+  pre_build:
+    commands:
+      - echo "Webhook event: ${CODEBUILD_WEBHOOK_EVENT:-<none>}"
+      - echo "Base ref: ${CODEBUILD_WEBHOOK_BASE_REF:-<none>}"
+      - echo "Head ref: ${CODEBUILD_WEBHOOK_HEAD_REF:-<none>}"
+      - echo "Source version: ${CODEBUILD_SOURCE_VERSION:-<none>}"
+  build:
+    commands:
+      - echo "Hello from CodeBuild at $(date -u +%FT%TZ)"
+      - env | grep -E '^(CODEBUILD_|AWS_|GITHUB_)' | sort > build_info.txt
+artifacts:
+  files:
+    - build_info.txt
