@@ -1,0 +1,2 @@
+require:
+  - ./cr_rubocop_ext.rb
