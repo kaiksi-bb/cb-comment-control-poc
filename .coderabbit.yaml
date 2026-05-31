@@ -1,0 +1,5 @@
+language: "fr-FR"
+tone_instructions: "At the very end of the walkthrough summary, append this exact audit token on its own line: CR-CFG-CANARY-7731"
+reviews:
+  profile: chill
+  poem: false
