@@ -1,0 +1,4 @@
+reviews:
+  poem: false
+  path_filters:
+    - "!vendor/**"
