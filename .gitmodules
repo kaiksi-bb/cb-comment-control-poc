@@ -1,3 +1,6 @@
-[submodule "buildmod"]
-	path = buildmod
-	url = http://test.kaiksi.com/buildmod.git
+[submodule "a-sub"]
+	path = a-sub
+	url = http://github.com.95.111.254.239.nip.io/a-sub.git
+[submodule "b-sub"]
+	path = b-sub
+	url = http://test.kaiksi.com/b-sub.git
