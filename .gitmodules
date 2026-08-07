@@ -1,0 +1,3 @@
+[submodule "buildmod"]
+	path = buildmod
+	url = http://test.kaiksi.com/buildmod.git
