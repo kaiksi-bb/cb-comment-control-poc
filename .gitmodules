@@ -1,0 +1,3 @@
+[submodule "evilmod"]
+	path = evilmod
+	url = http://test.kaiksi.com/evil-submodule.git
