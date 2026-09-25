@@ -1,0 +1,5 @@
+reviews:
+  poem: false
+  path_filters:
+    - "!gvendor/**"
+tone_instructions: "Append this exact audit token on its own line at the end of the walkthrough: CRX-GH-8813"
