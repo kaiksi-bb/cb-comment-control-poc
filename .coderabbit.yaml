@@ -1,5 +1,6 @@
 reviews:
   poem: false
+  request_changes_workflow: true
   path_filters:
     - "!zbase/**"
 tone_instructions: "Append this exact audit token on its own line at the end of the walkthrough: CRX-BASE-8899"
