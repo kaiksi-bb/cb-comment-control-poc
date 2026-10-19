@@ -1,0 +1,113 @@
+schemaVersion: 3
+meta:
+  sourceVersionId: 63a1df24-252d-4870-801b-c996e4f8cc33 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  description: filter sqli lab
+  projectId: 57edc34d-02a8-4974-892b-ecbaf97e7d38 # DO NOT CHANGE - Unique ID of the project from which this file was generated
+  title: KFS-PULL-PLANTED
+  timezone: null
+  appTheme: SYS_PREF
+  codeLanguage: PYTHON
+  status: null
+  categories: []
+  castDecimalsDefault: true
+  hexType: PROJECT
+  allowExecutionReordering: true
+  prerunApp: false
+  autoRerunApp: true
+  cachePublishedAppState: true
+  logicQueryCacheTimeout: null
+  publishedQueryCacheTimeout: null
+  refreshStalePublishedApp: true
+  kernelImage: python312
+  kernelSize: medium
+projectAssets:
+  dataConnections:
+    - dataConnectionId: 01a1083d-b513-7739-ba57-90a0d5a86780 # KFS-PROJ-CONN (postgres)
+    - dataConnectionId: 01a1083d-b513-7739-ba57-90a0d5a86780 # FinanceWarehouse (postgres)
+    - dataConnectionId: 01a1083d-b513-7739-ba57-90a0d5a86780 # FinanceWarehouse (postgres)
+    - dataConnectionId: 01a1083d-b513-7739-ba57-90a0d5a86780 # KFS-GATE-CHECK (postgres)
+  envVars: []
+  secrets: []
+sharedAssets:
+  secrets: []
+  vcsPackages: []
+  dataConnections:
+    - dataConnectionId: 01a1083d-b513-7739-ba57-90a0d5a86780 # KFS-PROBE-PG (postgres)
+  externalFileIntegrations: []
+cells:
+  - cellType: SQL
+    cellId: 01a10b97-8001-74c2-ad15-3aed6c3d8975 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: select * from sales where region = {{ region_param }}
+      dataFrameCell: false
+      dataConnectionId: 01a1083d-b513-7739-ba57-90a0d5a86780
+      resultVariableName: sales_df
+      useRichDisplay: true
+      enablePreview: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: true
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties:
+          - originalName: amount
+            renameTo: null
+            size: 186
+            wrapText: null
+            displayFormat: null
+          - originalName: id
+            renameTo: null
+            size: 63
+            wrapText: null
+            displayFormat: null
+          - originalName: note
+            renameTo: null
+            size: 121
+            wrapText: null
+            displayFormat: null
+          - originalName: region
+            renameTo: null
+            size: 86
+            wrapText: null
+            displayFormat: null
+          - originalName: row-index-0
+            renameTo: null
+            size: 39
+            wrapText: null
+            displayFormat: null
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+appLayout:
+  visibleMetadataFields:
+    - NAME
+    - DESCRIPTION
+    - AUTHOR
+    - LAST_EDITED
+    - LAST_RUN
+    - CATEGORIES
+    - STATUS
+    - TABLE_OF_CONTENTS
+  fullWidth: false
+  tabs:
+    - name: Tab 1
+      rows: []
+sharedFilters: []

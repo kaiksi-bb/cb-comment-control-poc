@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  CanaryParam:
+    Type: String
+    Default: none
+Resources:
+  Canary:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: /ccsync/canary
+      Type: String
+      Value: !Ref CanaryParam

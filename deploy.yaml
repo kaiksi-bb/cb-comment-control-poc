@@ -1,0 +1,5 @@
+template-file-path: template.yaml
+parameters:
+  CanaryParam: CCSYNC-PRIVATE-CANARY-9f3a71b2c4d8
+tags:
+  poc: codeconnections-sync
