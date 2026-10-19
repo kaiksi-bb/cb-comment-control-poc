@@ -1,0 +1,4 @@
+---
+skip_files:
+  - zcfg/
+  - znos/
